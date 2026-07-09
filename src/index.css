@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,500;0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Archivo Narrow", "Oswald", sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Color tokens — factory floor palette */
+  --color-ink: #12181B;
+  --color-ink-soft: #2A3438;
+  --color-paper: #F7F5F0;
+  --color-paper-dim: #EDE9E0;
+  --color-paper-card: #FFFFFF;
+  --color-thread: #C4622D;
+  --color-thread-dim: #E8D9CD;
+  --color-spool: #2D5F4C;
+  --color-spool-dim: #DCE6E0;
+  --color-kraft: #8B7355;
+  --color-kraft-dim: #E7E0D3;
+  --color-alert: #B0413E;
+  --color-alert-dim: #F0DBD9;
+  --color-line: #DDD6C7;
+  --color-line-strong: #C7BEA9;
+}
+
+/* Custom styles and overrides */
+body {
+  font-family: var(--font-sans);
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line-strong);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-kraft);
+}
+
+/* Status Labels & Chips */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 7px;
+  border-radius: 2px;
+}
+.status-chip .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Done / Completed */
+.status-done, .status-completed {
+  background-color: var(--color-spool-dim);
+  color: var(--color-spool);
+}
+.status-done .dot, .status-completed .dot {
+  background-color: var(--color-spool);
+}
+
+/* Ongoing / In Progress / Open */
+.status-ongoing, .status-inprogress, .status-open {
+  background-color: var(--color-thread-dim);
+  color: var(--color-thread);
+}
+.status-ongoing .dot, .status-inprogress .dot, .status-open .dot {
+  background-color: var(--color-thread);
+}
+
+/* Not Started / Logged */
+.status-notstarted, .status-logged {
+  background-color: var(--color-kraft-dim);
+  color: var(--color-kraft);
+}
+.status-notstarted .dot, .status-logged .dot {
+  background-color: var(--color-kraft);
+}
+
+/* Blocked */
+.status-blocked {
+  background-color: var(--color-alert-dim);
+  color: var(--color-alert);
+}
+.status-blocked .dot {
+  background-color: var(--color-alert);
+}
+
+/* Continuous status */
+.status-continuous {
+  background-color: #DDE4EC;
+  color: #3E5C76;
+}
+.status-continuous .dot {
+  background-color: #3E5C76;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
